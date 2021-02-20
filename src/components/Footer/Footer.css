@@ -1,0 +1,72 @@
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-divider {
+  width: 100%;
+  background-color: #c4c4c4;
+  height: 2px;
+}
+
+.footer-upper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-upper-content {
+  font-family: "NotoSansKr-R";
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 5.08;
+  letter-spacing: -0.48px;
+  text-align: left;
+  color: #787878;
+}
+
+.footer-bottom-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 50px 0px 50px 70px;
+}
+
+.footer-bottom-descriptions {
+
+}
+
+.footer-bottom-title {
+  opacity: 0.6;
+  font-family: "Jalnan";
+  font-size: 28px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.93;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(25, 25, 25, 0.6);
+  margin-right: 130px;
+}
+
+.footer-bottom-email {
+}
+.footer-bottom-text {
+  font-family: "NotoSansKr-R";
+  font-size: 10px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: -0.56px;
+  text-align: left;
+  color: #191919;
+}
+
+.footer-label{
+    font-weight: bold;
+}
