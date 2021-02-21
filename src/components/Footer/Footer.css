@@ -35,9 +35,6 @@
   padding: 50px 0px 50px 70px;
 }
 
-.footer-bottom-descriptions {
-
-}
 
 .footer-bottom-title {
   opacity: 0.6;
@@ -53,8 +50,6 @@
   margin-right: 130px;
 }
 
-.footer-bottom-email {
-}
 .footer-bottom-text {
   font-family: "NotoSansKr-R";
   font-size: 10px;
@@ -69,4 +64,28 @@
 
 .footer-label{
     font-weight: bold;
+}
+
+
+/*mobile*/
+
+.mobile-footer-bottom-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px 0px 25px 0px;
+}
+
+.mobile-footer-bottom-title{
+  opacity: 0.6;
+  font-family: "Jalnan";
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.93;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(25, 25, 25, 0.6);
 }

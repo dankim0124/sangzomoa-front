@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import sample from "./sampleImage.jpg";
 import "./FuneralCard.css";
+
 const sampleData = {
   name: "프리드 라이프 늘함께",
   price: 360,
@@ -9,17 +10,54 @@ const sampleData = {
   score: 3.5,
 };
 
+export const isMobile = window.screen.width < 770;
+
+const desktopCSS = {
+  "funeral-item-grid": "funeral-item-grid",
+  "funeral-card-container": "funeral-card-container",
+  "funeral-card-image": "funeral-card-image",
+  "funeral-card-name": "funeral-card-name",
+  "funeral-card-price": "funeral-card-price",
+  "funeral-card-socre-view": "funeral-card-socre-view",
+  "funeral-show-detail": "funeral-show-detail",
+  "funeral-card-funeral-contents": "funeral-card-funeral-contents",
+};
+const mobileCSS = {
+  "funeral-item-grid": "mobile-funeral-item-grid",
+  "funeral-card-container": "mobile-funeral-card-container",
+  "funeral-card-image": "mobile-funeral-card-image",
+  "funeral-card-name": "mobile-funeral-card-name",
+  "funeral-card-price": "mobile-funeral-card-price",
+  "funeral-card-socre-view": "mobile-funeral-card-socre-view",
+  "funeral-show-detail": "mobile-funeral-show-detail",
+  "funeral-card-funeral-contents": "mobile-funeral-card-funeral-contents",
+};
+
+const CSS = isMobile ? mobileCSS : desktopCSS;
+
 const FuneralCard = () => {
   const funeralItem = sampleData;
   return (
-    <div className="funeral-card-container">
-      <img src={sample} className="funerral-card-image" />
-      <div className="funeral-card-descriptions">
-        <div className="funeral-card-name">{funeralItem.name}</div>
-        <div className="funeral-card-price">가격: {funeralItem.price}</div>
-        <FuneralContents contents={funeralItem.contents} />
-        <ScoreView score={funeralItem.score} />
+    <div className={`${CSS["funeral-card-container"]}`}>
+      <div className="funeral-card-upper-box">
+        <img src={sample} className={`${CSS["funeral-card-image"]}`} />
+        <div className="column_">
+          <div className={`${CSS["funeral-card-name"]}`}>
+            {funeralItem.name}
+          </div>
+          <div className={`${CSS["funeral-card-price"]}`}>
+            가격: {funeralItem.price} 만원
+          </div>
+          <ScoreView score={funeralItem.score} />
+          <a
+            href="localhost://3000"
+            className={`${CSS["funeral-show-detail"]}`}
+          >
+            자세히 보기
+          </a>
+        </div>
       </div>
+      <FuneralContents contents={funeralItem.contents} />
     </div>
   );
 };
@@ -30,7 +68,7 @@ const FuneralContents = ({ contents }) => {
     let i = 0;
     for (const funeralContent of contents) {
       result += "#" + funeralContent + " ";
-      if (i != 0 && i % 2 == 0) {
+      if (i != 0 && i % 3 == 0) {
         result += "\n";
       }
     }
@@ -38,7 +76,7 @@ const FuneralContents = ({ contents }) => {
   };
   if (contents) {
     return (
-      <div className="funeral-card-funeral-contents">
+      <div className={`${CSS["funeral-card-funeral-contents"]}`}>
         {renderFuneralContents(contents)}
       </div>
     );
@@ -51,15 +89,19 @@ const ScoreView = ({ score }) => {
     score = Math.round(score);
     const result = [];
     for (i; i < score; i++) {
-      result.push(<i className="fas fa-heart" key={i}></i>);
+      result.push(<i className="fas fa-heart score-heart-icon" key={i}></i>);
+      result.push(" ");
     }
     for (i; i < 5; i++) {
-      result.push(<i className="far fa-heart" key={i}></i>);
+      result.push(<i className="far fa-heart score-heart-icon" key={i}></i>);
+      result.push(" ");
     }
     return result;
   };
   return (
-    <div className="funeral-card-socre-view">평점: {renderHeart(score)}</div>
+    <div className={`${CSS["funeral-card-socre-view"]}`}>
+      평점: {renderHeart(score)}
+    </div>
   );
 };
 

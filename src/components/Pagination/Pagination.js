@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import FuneralCard2 from "../../FuneralCard/FuneralCard2";
+import $ from "jquery";
 
+import FuneralCard from "../FuneralCard/FuneralCard";
 import "./Pagination.css";
 
 export const isMobile = window.screen.width < 770;
@@ -14,9 +15,16 @@ const CSS = isMobile ? mobileCSS : desktopCSS;
 const Paginate = (props) => {
   const [funeralServices, setFuneralServices] = useState();
   const [pageCount, setPageCount] = useState(0);
-  const [offset, setOffset] = useState(0);
   const [shownFuneralServices, setShownFuneralServices] = useState();
-  const perPage = 5;
+  const perPage = 12;
+
+// set Home
+  const setHomeSize = () => {
+    let homeWidth = $(".home-contents").width();
+    $(".navbar-container").css("width", homeWidth);
+    $(".navbar").css("min-width", 0);
+    console.log("홈사이즈 맞추기")
+  };
 
   useEffect(() => {
     if (props.funeralItems && props.funeralItems.Items !== funeralServices) {
@@ -30,11 +38,13 @@ const Paginate = (props) => {
     if (funeralServices) {
       loadShownFuneralServices();
     }
+    setHomeSize();
   }, [funeralServices]);
 
-  useEffect(() => {
-    //    console.log("eveyr/ shown", shownFuneralServices);
-  });
+  useEffect(()=>{
+    setHomeSize();
+  },[shownFuneralServices])
+
 
   const loadShownFuneralServices = (index = 0) => {
     const left = index * perPage;
@@ -43,7 +53,6 @@ const Paginate = (props) => {
         ? left + perPage
         : funeralServices.length;
 
-    console.log("left&right: ", left, right);
     if (funeralServices) {
       setShownFuneralServices(funeralServices.slice(left, right));
     }
@@ -60,7 +69,7 @@ const Paginate = (props) => {
       <div>
         <div className={`${CSS["funeral-item-grid"]}`}>
           {shownFuneralServices.map((item, index) => {
-            return <FuneralCard2 key={item.SK} />;
+            return <FuneralCard key={item.SK} />;
           })}
         </div>
         <ReactPaginate

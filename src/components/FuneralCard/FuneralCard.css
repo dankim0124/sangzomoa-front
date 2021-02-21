@@ -1,15 +1,28 @@
 .funeral-card-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
+  padding-bottom:30px;
 }
 
-.funerral-card-image {
-  width: 256px;
-  height: 256px;
-  margin-right: 31px;
+.funeral-card-upper-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
+.funeral-card-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 13px;
+  border-radius: 10px;
+}
+
+.column_ {
+  display: flex;
+  flex-direction: column;
+}
 .funeral-card-descriptions {
   display: flex;
   flex-direction: column;
@@ -18,39 +31,147 @@
 
 .funeral-card-name {
   font-family: "NotoSanskr-R";
-  font-size: 27.5px;
+  font-size: 19px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 2.2;
-  letter-spacing: -1.1px;
+  line-height: 3.1;
+  letter-spacing: 0.78px;
   text-align: left;
   color: #171717;
 
   margin-top: -15px;
 }
 
-.funeralcard-price {
-  margin-top: 10px;
+.funeral-card-price {
   opacity: 0.9;
   font-family: "NotoSanskr-R";
-  font-size: 26.5px;
+  font-size: 16px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 0.87;
-  letter-spacing: -1.06px;
+  line-height: 1.44;
+  letter-spacing: 0.64px;
   text-align: left;
   color: #171717;
 }
 
 .funeral-card-funeral-contents {
-  width: 194px;
-  height: 75px;
-  margin-top: 60px;
+  font-family: "NotoSanskr-R";
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.37;
+  letter-spacing: -0.82px;
+  text-align: left;
+  color: rgba(114, 114, 114, 0.9);
+}
+
+.score-heart-icon {
+  color: #679cbd;
+}
+.funeral-card-socre-view {
   opacity: 0.9;
   font-family: "NotoSanskr-R";
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.44;
+  letter-spacing: -0.64px;
+  text-align: left;
+  color: rgba(23, 23, 23, 0.9);
+
+}
+
+.funeral-show-detail {
+  opacity: 0.9;
+  font-family: "NotoSanskr-R";
+  font-size: 12.5px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.84;
+  letter-spacing: -0.5px;
+  text-align: left;
+  color: rgba(23, 23, 23, 0.9);
+}
+
+
+/* mobile here */
+
+.mobile-funeral-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom:30px;
+}
+
+.mobile-funeral-card-image {
+  width: 90px;
+  height: 90px;
+  margin-right: 13px;
+  border-radius: 10px;
+}
+
+.mobile-funeral-card-name {
+  font-family: "NotoSanskr-R";
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.0;
+  letter-spacing: 0.78px;
+  margin-top:-5px;
+  text-align: left;
+  color: #171717;
+}
+
+.mobile-funeral-card-price{
+  opacity: 0.9;
+  font-family: "NotoSanskr-R";
+  font-size: 1.0rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: 0.64px;
+  text-align: left;
+  color: #171717; 
+}
+
+.mobile-funeral-card-socre-view{
+  opacity: 0.9;
+  font-family: "NotoSanskr-R";
+  font-size: 1.0rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -0.64px;
+  text-align: left;
+  color: rgba(23, 23, 23, 0.9); 
+}
+
+
+.mobile-funeral-show-detail {
+  opacity: 0.9;
+  font-family: "NotoSanskr-R";
+  font-size: 0.8rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.84;
+  letter-spacing: -0.5px;
+  text-align: left;
+  color: rgba(23, 23, 23, 0.9);
+}
+
+
+.mobile-funeral-card-funeral-contents {
+  font-family: "NotoSanskr-R";
+  font-size: 0.9rem;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;

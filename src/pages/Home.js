@@ -6,11 +6,13 @@ import desktop_banner from "../images/visual@3x.jpg";
 import mobile_banner from "../images/mobile_banner2.jpg";
 import searchFilter from "../images/search_filter.png";
 import filterReset from "../images/filter_reset.jpg";
-import jQuery from "jquery";
-import Paginate from "../components/NavBar/Pagination/Pagination";
+import CardGrid from "../components/Pagination/Pagination";
 
+// jquery -> adjust navbar size .. -> should be updated with styled compoenet
+import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
-let banner;
+
+//mobile css
 export const isMobile = window.screen.width < 770;
 const desktopCSS = {
   "home-container": "home-container",
@@ -44,22 +46,12 @@ const mobileCSS = {
   "home-search-filter-img": "mobile-home-search-filter-img",
 };
 
-let CSS;
-
-//mobile screen <768px?
-console.log("out of component : ", window.screen.width);
-
-if (isMobile) {
-  banner = mobile_banner;
-  CSS = mobileCSS;
-} else {
-  banner = desktop_banner;
-  CSS = desktopCSS;
-}
+const CSS = isMobile ? mobileCSS : desktopCSS;
+const banner = isMobile ? mobile_banner : desktop_banner;
 
 const Home = () => {
   //Hooks
-  const [funeralItems, setFuneralItems] = useState();
+  const [funeralItems, setFuneralItems] = useState(false);
 
   useEffect(async () => {
     if (isMobile) {
@@ -71,6 +63,7 @@ const Home = () => {
     }
   }, []);
 
+  //func
   const mobileInitialize = () => {
     const mobileWidth = window.screen.width;
     window.$(".home-mobile-banner-img").css("height", mobileWidth);
@@ -80,12 +73,6 @@ const Home = () => {
     window
       .$(".mobile-banner-contents")
       .css("margin-bottom", bannerContentsBottom);
-  };
-
-  //functions
-  const getGridSize = () => {
-    var jbVar = window.$(".funeral-item-grid").width();
-    console.log("grid Size : ", jbVar);
   };
 
   const queryFuneralItems = async () => {
@@ -98,8 +85,6 @@ const Home = () => {
     return data;
   };
 
-  //eventListener
-  window.addEventListener("resize", getGridSize);
   return (
     <>
       <img
@@ -152,8 +137,8 @@ const Home = () => {
               />
             </div>
           </div>
-          
-        <Paginate funeralItems={funeralItems} />
+
+          <CardGrid funeralItems={funeralItems} />
         </div>
       </div>
     </>
