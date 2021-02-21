@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import sample from "./sampleImage.jpg";
 import "./FuneralCard.css";
@@ -9,7 +9,6 @@ const sampleData = {
   contents: ["리무진", "입관보조", "부고알림", "상복", "장지할인"],
   score: 3.5,
 };
-
 export const isMobile = window.screen.width < 770;
 
 const desktopCSS = {
@@ -35,31 +34,31 @@ const mobileCSS = {
 
 const CSS = isMobile ? mobileCSS : desktopCSS;
 
-const FuneralCard = () => {
-  const funeralItem = sampleData;
-  return (
-    <div className={`${CSS["funeral-card-container"]}`}>
-      <div className="funeral-card-upper-box">
-        <img src={sample} className={`${CSS["funeral-card-image"]}`} />
-        <div className="column_">
-          <div className={`${CSS["funeral-card-name"]}`}>
-            {funeralItem.name}
+const FuneralCard = ({item}) => {
+    return (
+      <div className={`${CSS["funeral-card-container"]}`}>
+        <div className="funeral-card-upper-box">
+          <img src={sample} className={`${CSS["funeral-card-image"]}`} />
+          <div className="column_">
+            <div className={`${CSS["funeral-card-name"]}`}>
+              {item.company_name} {item.product_name}
+            </div>
+            <div className={`${CSS["funeral-card-price"]}`}>
+              가격: {item.price} 만원
+            </div>
+            <ScoreView score={3.8} />
+            <a
+              href={item.product_url}
+              className={`${CSS["funeral-show-detail"]}`}
+            >
+              자세히 보기
+            </a>
           </div>
-          <div className={`${CSS["funeral-card-price"]}`}>
-            가격: {funeralItem.price} 만원
-          </div>
-          <ScoreView score={funeralItem.score} />
-          <a
-            href="localhost://3000"
-            className={`${CSS["funeral-show-detail"]}`}
-          >
-            자세히 보기
-          </a>
         </div>
+        <FuneralContents contents={sampleData.contents} />
       </div>
-      <FuneralContents contents={funeralItem.contents} />
-    </div>
-  );
+    );
+  
 };
 
 const FuneralContents = ({ contents }) => {

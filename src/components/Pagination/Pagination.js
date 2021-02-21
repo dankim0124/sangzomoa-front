@@ -69,7 +69,7 @@ const Paginate = (props) => {
       <div>
         <div className={`${CSS["funeral-item-grid"]}`}>
           {shownFuneralServices.map((item, index) => {
-            return <FuneralCard key={item.SK} />;
+            return <FuneralCard key={item.SK} item={item}/>;
           })}
         </div>
         <ReactPaginate
