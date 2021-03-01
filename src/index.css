@@ -370,3 +370,6 @@ template {
 [hidden] {
   display: none;
 }
+a{
+  color:black;
+}

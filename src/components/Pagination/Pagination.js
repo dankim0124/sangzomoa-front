@@ -4,8 +4,7 @@ import $ from "jquery";
 
 import FuneralCard from "../FuneralCard/FuneralCard";
 import "./Pagination.css";
-
-export const isMobile = window.screen.width < 770;
+import {isMobile} from "../../Materials/logic/MobileMiddleWare";
 
 const desktopCSS = {"funeral-item-grid":"funeral-item-grid"};
 const mobileCSS = {"funeral-item-grid":"mobile-funeral-item-grid"};

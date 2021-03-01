@@ -7,13 +7,14 @@ import mobile_banner from "../images/mobile_banner2.jpg";
 import searchFilter from "../images/search_filter.png";
 import filterReset from "../images/filter_reset.jpg";
 import CardGrid from "../components/Pagination/Pagination";
+import Footer  from "../components/Footer/Footer";
+
+import {isMobile} from "../Materials/logic/MobileMiddleWare";
 
 // jquery -> adjust navbar size .. -> should be updated with styled compoenet
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
-//mobile css
-export const isMobile = window.screen.width < 770;
 const desktopCSS = {
   "home-container": "home-container",
   "home-contents": "home-contents",
@@ -64,11 +65,15 @@ const Home = () => {
   }, []);
 
   //func
+  // 추가분 : .browser initialize 는 app 에서 진행해야됨.. 분리.
+  // isMobile 은 app 에서 ? 아니면 materials에서 관리?
+  // materials  ->  components -> text, space ... 
+  //            ㄴ> logic  - > mobile Middleware
+
   const mobileInitialize = () => {
     const mobileWidth = window.screen.width;
     window.$(".home-mobile-banner-img").css("height", mobileWidth);
     window.$(".browser_").css("width", mobileWidth);
-    window.$(".browser_").css("min-width", "0px");
     const bannerContentsBottom = mobileWidth - 140 - 101; // margin-top & banner contents height
     window
       .$(".mobile-banner-contents")
@@ -76,7 +81,6 @@ const Home = () => {
   };
 
   const queryFuneralItems = async () => {
-    const hello = await API.get("sanzo_backend", "/test");
     const data = await API.post("sanzo_backend", "/queryByPk", {
       body: {
         PK: "funeralSevice",
@@ -139,6 +143,8 @@ const Home = () => {
           </div>
 
           <CardGrid funeralItems={funeralItems} />
+
+        <Footer/>
         </div>
       </div>
     </>

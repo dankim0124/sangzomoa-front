@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import sample from "./sampleImage.jpg";
 import "./FuneralCard.css";
+import { isMobile } from "../../Materials/logic/MobileMiddleWare";
 
 const sampleData = {
   name: "프리드 라이프 늘함께",
@@ -9,7 +10,6 @@ const sampleData = {
   contents: ["리무진", "입관보조", "부고알림", "상복", "장지할인"],
   score: 3.5,
 };
-export const isMobile = window.screen.width < 770;
 
 const desktopCSS = {
   "funeral-item-grid": "funeral-item-grid",
@@ -34,31 +34,30 @@ const mobileCSS = {
 
 const CSS = isMobile ? mobileCSS : desktopCSS;
 
-const FuneralCard = ({item}) => {
-    return (
-      <div className={`${CSS["funeral-card-container"]}`}>
-        <div className="funeral-card-upper-box">
-          <img src={sample} className={`${CSS["funeral-card-image"]}`} />
-          <div className="column_">
-            <div className={`${CSS["funeral-card-name"]}`}>
-              {item.company_name} {item.product_name}
-            </div>
-            <div className={`${CSS["funeral-card-price"]}`}>
-              가격: {item.price} 만원
-            </div>
-            <ScoreView score={3.8} />
-            <a
-              href={item.product_url}
-              className={`${CSS["funeral-show-detail"]}`}
-            >
-              자세히 보기
-            </a>
+const FuneralCard = ({ item }) => {
+  return (
+    <div className={`${CSS["funeral-card-container"]}`}>
+      <div className="funeral-card-upper-box">
+        <img src={sample} className={`${CSS["funeral-card-image"]}`} />
+        <div className="column_">
+          <div className={`${CSS["funeral-card-name"]}`}>
+            {item.company_name} {item.product_name}
           </div>
+          <div className={`${CSS["funeral-card-price"]}`}>
+            가격: {item.price} 만원
+          </div>
+          <ScoreView score={3.8} />
+          <a
+            href={item.product_url}
+            className={`${CSS["funeral-show-detail"]}`}
+          >
+            자세히 보기
+          </a>
         </div>
-        <FuneralContents contents={sampleData.contents} />
       </div>
-    );
-  
+      <FuneralContents contents={sampleData.contents} />
+    </div>
+  );
 };
 
 const FuneralContents = ({ contents }) => {
@@ -89,11 +88,10 @@ const ScoreView = ({ score }) => {
     const result = [];
     for (i; i < score; i++) {
       result.push(<i className="fas fa-heart score-heart-icon" key={i}></i>);
-      result.push(" ");
+      
     }
     for (i; i < 5; i++) {
       result.push(<i className="far fa-heart score-heart-icon" key={i}></i>);
-      result.push(" ");
     }
     return result;
   };

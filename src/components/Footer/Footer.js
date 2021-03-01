@@ -1,8 +1,8 @@
 import React from "react";
 
 import "./Footer.css";
+import {isMobile} from "../../Materials/logic/MobileMiddleWare"
 
-export const isMobile = window.screen.width < 770;
 const desktopCSS = {
   "footer-bottom-container":"footer-bottom-container",
   "footer-bottom-title":"footer-bottom-title"

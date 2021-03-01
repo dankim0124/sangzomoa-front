@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Amplify from 'aws-amplify';
 
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import config from './aws-exports';
 import "./index.css";
 import App from "./App";
