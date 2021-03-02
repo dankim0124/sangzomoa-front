@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { API } from "aws-amplify";
 import styled from "styled-components";
 
-import {preventScroll, allowScroll} from "../../Materials/logic/preventScroll";
+import {
+  preventScroll,
+  allowScroll,
+} from "../../Materials/logic/preventScroll";
 import "./NavBar.css";
 import kakao_login_small from "./kakao_login_small.png";
 import $ from "jquery";
@@ -53,15 +56,15 @@ const NavBar = (props) => {
     setHomeSize();
   }, []);
 
-  useEffect(()=>{
-    if(click){
-      console.log("prevnet Scroll")
+  useEffect(() => {
+    if (click) {
+      console.log("prevnet Scroll");
       preventScroll();
-    }else{
-      console.log("allow Scroll")
+    } else {
+      console.log("allow Scroll");
       allowScroll();
     }
-  },[click])
+  }, [click]);
 
   //함수, 변수 이름 바꿔라
   const setHomeSize = () => {
@@ -195,6 +198,7 @@ const KakaoLogin = (props) => {
       scope: "account_email",
       success: (authObj) => {
         console.log(authObj);
+        // request info.
         window.Kakao.API.request({
           url: "/v2/user/me",
           success: (response) => {
@@ -202,13 +206,14 @@ const KakaoLogin = (props) => {
               user: response.kakao_account.email,
               token: authObj.access_token,
             });
-            console.log("login REsponse",response)
-            API.post("sanzo_backend","/kakaoLogin",{
-            body: {
-              email:response.kakao_account.email,
-              id:response.id
-            }}
-            )
+            console.log("login REsponse", response);
+            // to cognito
+            API.post("sanzo_backend", "/kakaoLogin", {
+              body: {
+                email: response.kakao_account.email,
+                id: response.id,
+              },
+            });
             alert("카카오톡 계정으로 로그인 되었습니다.");
           },
           fail: (e) => {

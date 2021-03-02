@@ -1,7 +1,7 @@
 import React,{ useEffect,useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import {AuthProvider} from "./lib/authLib";
+import {AuthProvider } from "./lib/authLib";
 import Navbar from "./components/NavBar/NavBar";
 import Home from "./pages/Home";
 import SearchFuneralCompany from "./pages/SearchFuneralCompany";
@@ -13,8 +13,6 @@ import {
 
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-
   useEffect(() => {
     //initialized print "true" if successed;
     try {

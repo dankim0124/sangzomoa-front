@@ -1,5 +1,5 @@
 import { data } from "jquery";
-import React, { useContext, createContext, useReducer } from "react";
+import React, { useContext, createContext, useReducer, useEffect } from "react";
 
 const AuthStateContext = createContext();
 const AuthDispatchContext = createContext();
@@ -22,6 +22,17 @@ export const useAuthDispatch = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, dispatch] = useReducer(AuthReducer, initialState);
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("user_"))) {
+      dispatchLogin(dispatch, JSON.parse(localStorage.getItem("user_")));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("user_", JSON.stringify(user));
+  }, [user]);
+
   return (
     <AuthStateContext.Provider value={user}>
       <AuthDispatchContext.Provider value={dispatch}>
@@ -86,5 +97,5 @@ export const dispatchLoginError = (dispatch, loginPayload) => {
 };
 
 export const dispatchLogOut = (dispatch) => {
-  dispatch({ type: "LOGOUT"});
+  dispatch({ type: "LOGOUT" });
 };
