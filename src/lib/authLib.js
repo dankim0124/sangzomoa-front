@@ -1,4 +1,3 @@
-import { data } from "jquery";
 import React, { useContext, createContext, useReducer, useEffect } from "react";
 
 const AuthStateContext = createContext();
@@ -97,5 +96,8 @@ export const dispatchLoginError = (dispatch, loginPayload) => {
 };
 
 export const dispatchLogOut = (dispatch) => {
+  if (JSON.parse(localStorage.getItem("user_"))) {
+    localStorage.setItem("user_", null);
+  }
   dispatch({ type: "LOGOUT" });
 };

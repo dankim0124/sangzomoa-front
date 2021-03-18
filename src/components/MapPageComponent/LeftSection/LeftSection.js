@@ -2,24 +2,33 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-
 import { importKakaoMapAPI, markPoint } from "./KaKaoMap";
 import { isMobile } from "../../../Materials/logic/MobileMiddleWare";
 
-
-const LeftSection = ({ kakaoRef, funeralCompany,setClickedCompany,  setCenterAddr ,centerAddr }) => {
+const LeftSection = ({
+  kakaoRef,
+  funeralCompany,
+  setClickedCompany,
+  setCenterAddr,
+  centerAddr,
+}) => {
   const { map, geocoder } = kakaoRef.current;
-  
+
   useEffect(() => {
-    importKakaoMapAPI("SearchSection-MapDiv", kakaoRef, setCenterAddr , centerAddr);
+    importKakaoMapAPI(
+      "SearchSection-MapDiv",
+      kakaoRef,
+      setCenterAddr,
+      centerAddr
+    );
     return () => {
-      console.log("clean up kakoMap")
+      console.log("clean up kakoMap");
       kakaoRef.current = undefined;
     };
   }, []);
 
   useEffect(() => {
-    markPoint(map, geocoder, funeralCompany,setClickedCompany);
+    markPoint(map, geocoder, funeralCompany, setClickedCompany);
   }, [funeralCompany]);
 
   return (
@@ -42,6 +51,7 @@ const Left = isMobile
   : styled.div`
       width: 641px;
       height: 714px;
+      margin-top: 48px;
 
       @media (max-width: 1440px) {
         width: 500px;

@@ -22,7 +22,6 @@ const Paginate = (props) => {
     let homeWidth = $(".home-contents").width();
     $(".navbar-container").css("width", homeWidth);
     $(".navbar").css("min-width", 0);
-    console.log("홈사이즈 맞추기")
   };
 
   useEffect(() => {

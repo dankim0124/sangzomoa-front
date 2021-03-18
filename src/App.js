@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {AuthProvider } from "./lib/authLib";
 import Navbar from "./components/NavBar/NavBar";
 import Home from "./pages/Home";
+import Home2 from "./pages/Home2";
+import MyPage from "./pages/MyPage";
 import SearchFuneralCompany from "./pages/SearchFuneralCompany";
+import ServiceDetail from "./pages/ServiceDetail";
 import "./App.css";
 import {
   isMobile,
@@ -20,9 +23,7 @@ const App = () => {
     } catch (e) {
       console.log(e);
     }
-    console.log(window.Kakao.isInitialized());
-    console.log(window.Kakao);
-
+    console.log("kakao api initialized : ",window.Kakao.isInitialized());
     // mobile setting
     if (isMobile) {
       disableMinimumScreenSize();
@@ -36,11 +37,15 @@ const App = () => {
         <div className="browser_">
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/MyPage" exact component={MyPage}/>
             <Route
               path="/searchFuneralCompany"
               exact
               component={SearchFuneralCompany}
             />
+            <Route path="/serviceDetail/:serviceId" exact component={ServiceDetail}/>
+            <Route path ="/Home2" exact component={Home2}/> 
+
           </Switch>
         </div>
       </Router>

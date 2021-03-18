@@ -66,10 +66,9 @@ const NavBar = (props) => {
     }
   }, [click]);
 
-  //함수, 변수 이름 바꿔라
+  
   const setHomeSize = () => {
     let homeWidth = $(".home-contents").width();
-    console.log("homeSize Size : ", homeWidth);
     //모바일 불필요 설정 ..... -> 다음 부터 styled component
     $(".navbar-container").css("width", homeWidth);
     $(".navbar").css("min-width", 0);
@@ -152,7 +151,7 @@ const NavBar = (props) => {
             </li>
             <li className="nav-item">
               <Link
-                to="/"
+                to="/MyPage"
                 className={`${CSS["nav-links"]}`}
                 onClick={closeMobileMenu}
               >
@@ -189,9 +188,6 @@ const KakaoLogin = (props) => {
   const dispatch = useAuthDispatch();
   const loginContext = useAuthState();
 
-  useEffect(() => {
-    console.dir(loginContext);
-  });
 
   const handleKaKaoLogin = () => {
     window.Kakao.Auth.login({
@@ -206,7 +202,7 @@ const KakaoLogin = (props) => {
               user: response.kakao_account.email,
               token: authObj.access_token,
             });
-            console.log("login REsponse", response);
+            console.dir(response);
             // to cognito
             API.post("sanzo_backend", "/kakaoLogin", {
               body: {

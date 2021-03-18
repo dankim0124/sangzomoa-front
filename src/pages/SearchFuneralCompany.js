@@ -32,7 +32,6 @@ const SearchFuneralCompany = () => {
     let endTime = new Date();
     console.log("api delayed : ",endTime-startTime)
     setFuneralCompny(company.Items)
-    console.log(company);
     return company;
   };
    

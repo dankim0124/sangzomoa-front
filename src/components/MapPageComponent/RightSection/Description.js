@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API } from "aws-amplify";
 import styled from "styled-components";
+import {Rate} from "antd";
 
 import Text from "../../../Materials/Text";
 import { isMobile } from "../../../Materials/logic/MobileMiddleWare";
@@ -58,19 +59,7 @@ const DescriptionSection = ({ clickedCompany }) => {
     setFoodPrice(food);
   };
 
-  const renderScoreIcon = (score) => {
-    const result = [];
-    let i = 0;
-    for (i; i < score; i++) {
-      result.push(<Heart className="fas fa-heart score-heart-icon" key={i} />);
-      result.push(emptySpace);
-    }
-    for (i; i < 5; i++) {
-      result.push(<Heart className="far fa-heart score-heart-icon" key={i} />);
-      result.push(emptySpace);
-    }
-    return result;
-  };
+  
 
   if (clickedCompany) {
     return (
@@ -86,11 +75,11 @@ const DescriptionSection = ({ clickedCompany }) => {
 
         <ScoreSection>
           <Row>
-            <Text size="small" color="skyBlue">
-              {"4.0"}
+            <Text size="small" >
+              평점 :
               {emptySpace}
             </Text>{" "}
-            {renderScoreIcon(4)}
+            <Rate allowHalf disabled defaultValue={4} style={{fontSize:"14px"}}/>
           </Row>
         </ScoreSection>
 
@@ -168,7 +157,7 @@ const Heart = styled.i`
 const ScoreSection = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: ${isMobile ? "10px" : "14px"};
+  margin-top: ${isMobile ? "10px" : "10px"};
   align-items: center;
 `;
 

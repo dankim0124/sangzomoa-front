@@ -5,6 +5,7 @@ const textColor = {
   black: "#171717",
   grey: "#717171",
   skyBlue: "#5e96b9",
+  rateYellow :"#FADB14"
 };
 
 const textSize = {
@@ -27,7 +28,7 @@ const Text = styled.span`
         ? textSize[props.size]
         : props.size
       : textSize["normal"]};
-  line-height: ${(props) => (props.lineHeight ? props.lineHeight : 1)};
+  line-height: ${(props) => (props.lineHeight ? props.lineHeight : null)};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "normal")};
     
   `;
